@@ -1,0 +1,10 @@
+categoria,nome_it,descrizione_it,prezzo,tipo,attivo,ordine_categoria,ordine_prodotto,nome_en,descrizione_en,all_1_glutine,all_2_crostacei,all_3_uova,all_4_pesce,all_5_arachidi,all_6_soia,all_7_latte,all_8_frutta_a_guscio,all_9_sedano,all_10_senape,all_11_sesamo,all_12_solfiti,all_13_lupini,all_14_molluschi
+Birre,IPA Artigianale,"Birra artigianale 33cl",6.00,vegano,TRUE,1,1,Craft IPA,"Craft beer 33cl",TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+Birre,Weiss,"Birra di frumento 50cl",7.00,vegano,TRUE,1,2,Wheat Beer,"Wheat beer 50cl",TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+Cocktail,Negroni,"Gin, Vermouth, Campari",8.00,vegano,TRUE,2,1,Negroni,"Gin, Vermouth, Campari",FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE
+Cocktail,Spritz,"Aperol, Prosecco, Soda",6.00,vegano,TRUE,2,2,Spritz,"Aperol, Prosecco, Soda",FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE
+Cocktail,White Russian,"Vodka, Kahlua, Panna",9.00,vegetariano,TRUE,2,3,White Russian,"Vodka, Kahlua, Cream",FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE
+Analcolici,Coca Cola,"33cl vetro",3.50,vegano,TRUE,3,1,Coke,"33cl glass bottle",FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+Analcolici,Succo di Frutta,"Pesca o Albicocca",3.00,vegano,TRUE,3,2,Fruit Juice,"Peach or Apricot",FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+Snack,Bruschetta Classica,"Pomodoro, aglio, basilico",5.00,vegano,TRUE,4,1,Classic Bruschetta,"Tomato, garlic, basil",TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+Snack,Tagliere Formaggi,"Selezione di formaggi locali",12.00,vegetariano,TRUE,4,2,Cheese Board,"Selection of local cheeses",FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE

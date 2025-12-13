@@ -1,0 +1,9 @@
+categoria,nome_it,descrizione_it,prezzo,tipo,attivo,ordine_categoria,ordine_prodotto,nome_en,descrizione_en,all_1_glutine,all_2_crostacei,all_3_uova,all_4_pesce,all_5_arachidi,all_6_soia,all_7_latte,all_8_frutta_a_guscio,all_9_sedano,all_10_senape,all_11_sesamo,all_12_solfiti,all_13_lupini,all_14_molluschi
+Primi,Carbonara,"Spaghetti, uova, guanciale, pecorino",12.00,standard,TRUE,1,1,Carbonara,"Spaghetti, eggs, guanciale, cheese",TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+Primi,Amatriciana,"Spaghetti, pomodoro, guanciale",11.50,standard,TRUE,1,2,Amatriciana,"Spaghetti, tomato, guanciale",TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+Primi,Pasta al Pomodoro,"Spaghetti con salsa di pomodoro fresco",9.00,vegano,TRUE,1,3,Tomato Pasta,"Spaghetti with fresh tomato sauce",TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+Secondi,Tagliata di Manzo,"Rucola, grana e pachino",18.00,standard,TRUE,2,1,Sliced Beef,"Arugula, parmesan, cherry tomatoes",FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+Secondi,Insalata Caprese,"Mozzarella, pomodoro, basilico",10.00,vegetariano,TRUE,2,2,Caprese Salad,"Mozzarella, tomato, basil",FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+Secondi,Buddha Bowl,"Quinoa, verdure grigliate, hummus",14.00,vegano,TRUE,2,3,Buddha Bowl,"Quinoa, grilled vegetables, hummus",FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE
+Dolci,Tiramisù,"Fatto in casa",6.00,vegetariano,TRUE,3,1,Tiramisu,"Homemade",TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+Dolci,Sorbetto al Limone,"Fresco e leggero",5.00,vegano,TRUE,3,2,Lemon Sorbet,"Fresh and light",FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
