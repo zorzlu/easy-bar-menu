@@ -164,13 +164,11 @@ body {
     min-height: 100vh;
     background-color: var(--color-bg);
     margin-top: calc(var(--header-height) + var(--header-hero-height) + var(--sa-top));
-    transition: margin-top 0.3s ease;
+    transition: margin-top 0.35s ease-out, border-radius 0.35s ease-out;
     box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.15);
     border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
     padding-top: var(--filter-bar-height);
     padding-bottom: calc(var(--bottom-nav-height) + var(--sa-bottom));
-    transition: border-radius 0.3s ease;
-
 }
 
 /* Collapsed state - app stops at header bar (doesn't cover it) */
@@ -546,7 +544,7 @@ button:focus-visible {
 /* Diet Segmented Control */
 .diet-segmented {
     display: flex;
-    background: var(--color-bg);
+    background: var(--color-bg-segmented);
     border-radius: 10px;
     padding: 4px;
     gap: 4px;
@@ -559,7 +557,9 @@ button:focus-visible {
     align-items: center;
     gap: 2px;
     padding: 10px 8px;
-    border: none;
+    border-color: transparent;
+    border-width: 2px;
+    border-style: solid;
     background: transparent;
     border-radius: 8px;
     cursor: pointer;
@@ -577,6 +577,9 @@ button:focus-visible {
     background: var(--color-surface);
     color: var(--color-accent);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-color: var(--color-accent);
+    border-width: 2px;
+    border-style: solid;
 }
 
 .diet-icon {
@@ -617,8 +620,8 @@ button:focus-visible {
 }
 
 .allergen-checkbox.checked {
-    background: var(--color-error-bg);
-    border-color: var(--color-error);
+    background: var(--color-tertiary-container);
+    border-color: var(--color-tertiary);
 }
 
 .allergen-checkbox input[type="checkbox"] {
