@@ -139,32 +139,34 @@
             <!-- Info Container -->
             <div class="info-container" id="infoContainer" hidden></div>
         </main>
-
-        <!-- Bottom Navigation -->
-        <nav class="bottom-nav" role="navigation">
-            <button class="nav-item active" data-target="cuisine">
-                <span class="nav-icon">
-                    <span class="icon-regular" aria-hidden="true">&#xf444;</span>
-                    <span class="icon-filled" aria-hidden="true">&#xf448;</span>
-                </span>
-                <span class="nav-label" data-i18n="navCuisine">Cucina</span>
-            </button>
-            <button class="nav-item" data-target="bar">
-                <span class="nav-icon">
-                    <span class="icon-regular" aria-hidden="true">&#xf3c6;</span>
-                    <span class="icon-filled" aria-hidden="true">&#xf3c6;</span>
-                </span>
-                <span class="nav-label" data-i18n="navBar">Bar</span>
-            </button>
-            <button class="nav-item" data-target="info">
-                <span class="nav-icon">
-                    <span class="icon-regular" aria-hidden="true">&#xf4a4;</span>
-                    <span class="icon-filled" aria-hidden="true">&#xf4ab;</span>
-                </span>
-                <span class="nav-label" data-i18n="navInfo">Info</span>
-            </button>
-        </nav>
     </div><!-- /app-container -->
+
+    <nav class="bottom-nav">
+        <button class="nav-item active" data-target="cuisine">
+            <div class="nav-icon">
+                <span class="fluent-icon icon-regular">&#xf444;</span> <!-- food-24-regular -->
+                <span class="fluent-icon icon-filled">&#xf448;</span> <!-- food-24-filled -->
+            </div>
+            <span class="nav-label">Cucina</span>
+        </button>
+        <button class="nav-item" data-target="bar">
+            <div class="nav-icon">
+                <span class="fluent-icon icon-regular">&#xf3c6;</span> <!-- drink-beer-24-regular -->
+                <span class="fluent-icon icon-filled">&#xf3c6;</span> <!-- drink-beer-24-filled -->
+            </div>
+            <span class="nav-label">Bar</span>
+        </button>
+        <button class="nav-item" data-target="info">
+            <div class="nav-icon">
+                <span class="fluent-icon icon-regular">&#xf4a4;</span> <!-- info-24-regular -->
+                <span class="fluent-icon icon-filled">&#xf4ab;</span> <!-- info-24-filled -->
+            </div>
+            <span class="nav-label">Info</span>
+        </button>
+    </nav>
+
+    <!-- Bottom Gradient Scrim -->
+    <div class="bottom-scrim"></div>
 
     <script src="app.js?v=17"></script>
 </body>

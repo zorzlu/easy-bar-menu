@@ -191,6 +191,24 @@ body {
     border: 0;
 }
 
+
+/* ========================================
+   Bottom Scrim (Gradient Fade)
+   ======================================== */
+.bottom-scrim {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    /* Covers navbar + padding */
+    background: linear-gradient(to top, var(--md-sys-color-background) 0%, transparent 100%);
+    z-index: 800;
+    /* Below Navbar (2000), Above Content (0) */
+    pointer-events: none;
+    /* Allow clicks/scrolls to pass through */
+}
+
 /* Focus Styles */
 :focus-visible {
     outline: 2px solid var(--color-accent);
@@ -737,7 +755,8 @@ button:focus-visible {
     /* Distribute items evenly in pill */
     align-items: center;
     /* Center vertically */
-    z-index: 1000;
+    z-index: 2000;
+    /* Ensure it stays above everything, including scrim (800) */
     box-sizing: border-box;
     /* Include padding in height if used */
     padding: 0 16px;
