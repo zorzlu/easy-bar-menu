@@ -1,0 +1,56 @@
+:root {
+    --md-sys-color-primary: #4c662b;
+    --md-sys-color-on-primary: #ffffff;
+    --md-sys-color-primary-container: #cdeda3;
+    --md-sys-color-on-primary-container: #354e16;
+    --md-sys-color-secondary: #586249;
+    --md-sys-color-on-secondary: #ffffff;
+    --md-sys-color-secondary-container: #dce7c8;
+    --md-sys-color-on-secondary-container: #404a33;
+    --md-sys-color-tertiary: #386663;
+    --md-sys-color-on-tertiary: #ffffff;
+    --md-sys-color-tertiary-container: #bcece7;
+    --md-sys-color-on-tertiary-container: #1f4e4b;
+    --md-sys-color-error: #ba1a1a;
+    --md-sys-color-on-error: #ffffff;
+    --md-sys-color-error-container: #ffdad6;
+    --md-sys-color-on-error-container: #93000a;
+    --md-sys-color-background: #f9faef;
+    --md-sys-color-on-background: #1a1c16;
+    --md-sys-color-surface: #f9faef;
+    --md-sys-color-on-surface: #1a1c16;
+    --md-sys-color-surface-variant: #e1e4d5;
+    --md-sys-color-on-surface-variant: #44483d;
+    --md-sys-color-outline: #75796c;
+    --md-sys-color-outline-variant: #c5c8ba;
+    --md-sys-color-shadow: #000000;
+    --md-sys-color-scrim: #000000;
+    --md-sys-color-inverse-surface: #2f312a;
+    --md-sys-color-inverse-on-surface: #f1f2e6;
+    --md-sys-color-inverse-primary: #b1d18a;
+    --md-sys-color-surface-dim: #dadbd0;
+    --md-sys-color-surface-bright: #f9faef;
+    --md-sys-color-surface-container-lowest: #ffffff;
+    --md-sys-color-surface-container-low: #f3f4e9;
+    --md-sys-color-surface-container: #eeefe3;
+    --md-sys-color-surface-container-high: #e8e9de;
+    --md-sys-color-surface-container-highest: #e2e3d8;
+
+    /* Semantic Mappings */
+    --color-bg: var(--md-sys-color-surface);
+    --color-surface: var(--md-sys-color-surface-container-lowest);
+    --color-primary: var(--md-sys-color-on-surface);
+    --color-secondary: var(--md-sys-color-on-surface-variant);
+    --color-tertiary: var(--md-sys-color-outline);
+    --color-accent: var(--md-sys-color-primary);
+    --color-border: var(--md-sys-color-outline-variant);
+    --color-separator: var(--md-sys-color-surface-variant);
+    --color-active-bg: var(--md-sys-color-secondary-container);
+    --color-success: #34c759;
+    --color-error: var(--md-sys-color-error);
+    --color-error-bg: var(--md-sys-color-error-container);
+    --color-vegetarian: #4caf50;
+    --color-vegetarian-bg: #e8f5e9;
+    --color-vegan: #2e7d32;
+    --color-vegan-bg: #c8e6c9;
+}

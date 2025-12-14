@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "@material/material-color-utilities": "^0.3.0"
+  },
+  "scripts": {
+    "generate-theme": "node generate_colors.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

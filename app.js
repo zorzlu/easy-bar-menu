@@ -483,7 +483,8 @@ function applyConfig() {
 
     // Apply branding
     if (app?.name) elements.storeName.textContent = app.name;
-    if (app?.accentColor) document.documentElement.style.setProperty('--color-accent', app.accentColor);
+    // Color is now handled via generate-theme and colors.css
+
     if (app?.logoUrl) {
         elements.storeLogo.src = app.logoUrl;
         elements.storeLogo.hidden = false;
@@ -507,7 +508,7 @@ function applyConfig() {
     }
 }
 
-async function fetchData(tab) {
+async function fetchData(tab, isRefresh = true) {
     if (!CONFIG[tab]) return;
 
     let url = CONFIG[tab].url;
@@ -545,18 +546,18 @@ async function fetchData(tab) {
         state.data[tab] = data;
         state.lastFetch[tab] = new Date();
 
-        if (state.currentTab === tab) {
+        // Only render/update UI during refresh (not initial load)
+        if (isRefresh && state.currentTab === tab) {
             render();
             elements.errorBanner.hidden = true;
             if (!elements.loadingState.hidden) elements.loadingState.hidden = true;
             showUpdateIndicator();
-            // Scroll to top after new data loads
             window.scrollTo({ top: 0, behavior: 'instant' });
         }
 
     } catch (e) {
         console.error(`Final fetch error for ${tab}:`, e);
-        if (state.currentTab === tab) {
+        if (isRefresh && state.currentTab === tab) {
             elements.errorBanner.hidden = false;
             elements.loadingState.hidden = true;
             if (state.currentTab === 'info') {
@@ -1081,23 +1082,36 @@ document.addEventListener('keydown', (e) => {
 // Init
 // ========================================
 
-function init() {
+async function init() {
     // Scroll to top on page load
     window.scrollTo({ top: 0, behavior: 'instant' });
 
-    // Load translations first, then config, then data
-    loadTranslations().then(() => {
-        // Set initial language after translations loaded
+    try {
+        // Load translations and config first
+        await loadTranslations();
+        await loadConfig();
+
+        // Update UI with translations while loading data
         updateUILanguage();
         updateActiveFilterDisplay();
 
-        // Fetch config, then preload all data
-        loadConfig().then(() => {
-            fetchData('cuisine');
-            fetchData('bar');
-            fetchData('info');
-        });
-    });
+        // Load all data in parallel, wait for all to complete
+        await Promise.all([
+            fetchData('cuisine', false),
+            fetchData('bar', false),
+            fetchData('info', false)
+        ]);
+
+        // All data loaded - now render
+        render();
+        elements.loadingState.hidden = true;
+        elements.errorBanner.hidden = true;
+
+    } catch (e) {
+        console.error('Initialization error:', e);
+        elements.errorBanner.hidden = false;
+        elements.loadingState.hidden = true;
+    }
 
     // Smart refresh on visibility change
     document.addEventListener('visibilitychange', () => {
