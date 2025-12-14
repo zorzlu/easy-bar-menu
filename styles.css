@@ -169,11 +169,14 @@ body {
     border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
     padding-top: var(--filter-bar-height);
     padding-bottom: calc(var(--bottom-nav-height) + var(--sa-bottom));
+    transition: border-radius 0.3s ease;
+
 }
 
 /* Collapsed state - app stops at header bar (doesn't cover it) */
 .app-container.collapsed {
     margin-top: calc(var(--header-height) + var(--sa-top));
+    border-radius: 0;
 }
 
 /* Screen Reader Only */
@@ -359,6 +362,15 @@ button:focus-visible {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     margin-top: calc(-1 * var(--filter-bar-height));
+    border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+    transition: border-radius 0.3s ease;
+
+
+}
+
+.filter-bar.collapsed {
+    border-radius: 0;
+
 }
 
 .filter-bar[hidden] {

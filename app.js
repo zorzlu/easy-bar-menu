@@ -110,6 +110,7 @@ const elements = {
     mainHeader: document.getElementById('mainHeader'),
     headerCollapseToggle: document.getElementById('headerCollapseToggle'),
     // Filter elements
+    filterBar: document.getElementById('filterBar'),
     filterTrigger: document.getElementById('filterTrigger'),
     activeFilters: document.getElementById('activeFilters'),
     dietChip: document.getElementById('dietChip'),
@@ -1018,8 +1019,10 @@ function setHeaderExpanded(expanded, scrollToTop = false) {
 
     if (expanded) {
         elements.appContainer.classList.remove('collapsed');
+        elements.filterBar.classList.remove('collapsed');
     } else {
         elements.appContainer.classList.add('collapsed');
+        elements.filterBar.classList.add('collapsed');
     }
 
     // Update aria-expanded
