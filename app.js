@@ -195,6 +195,9 @@ function updateUILanguage() {
 
     // Re-render menu with new language
     render();
+
+    // Update theme color (in case language change affects theme/colors)
+    updateThemeColor();
 }
 
 // ========================================
@@ -1409,6 +1412,22 @@ function updateActiveFilterDisplay() {
     }
 }
 
+function updateThemeColor() {
+    // Get the computed background color from CSS variable
+    const computedStyle = getComputedStyle(document.documentElement);
+    let themeColor = computedStyle.getPropertyValue('--color-bg').trim();
+    if (!themeColor) themeColor = '#ffffff'; // Fallback if variable not found
+
+    // Update or create meta tag
+    let metaThemeColor = document.querySelector('meta[name="theme-color"]');
+    if (!metaThemeColor) {
+        metaThemeColor = document.createElement('meta');
+        metaThemeColor.name = 'theme-color';
+        document.head.appendChild(metaThemeColor);
+    }
+    metaThemeColor.content = themeColor;
+}
+
 function buildAllergenGrid() {
     let html = '';
     Object.entries(ALLERGENS).forEach(([colKey, allergen]) => {
@@ -1925,14 +1944,12 @@ async function init() {
     document.addEventListener('visibilitychange', () => {
         if (document.visibilityState === 'visible') {
             const now = new Date();
-            const last = state.lastFetch[state.currentTab];
+            const last = state.lastFetch.unified;
             const STALE_THRESHOLD = 5 * 60 * 1000;
 
             if (!last || (now - last > STALE_THRESHOLD)) {
-                // Refresh all tabs when returning after being stale
-                fetchData('kitchen');
-                fetchData('bar');
-                fetchData('info');
+                // Refresh data using unified fetcher
+                fetchUnifiedData(true);
             }
         }
     });

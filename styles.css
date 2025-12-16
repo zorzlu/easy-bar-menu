@@ -253,6 +253,7 @@ body {
    Bottom Scrim (Gradient Fade)
    ======================================== */
 .bottom-scrim {
+    display: none;
     position: fixed;
     bottom: 0;
     left: 0;
