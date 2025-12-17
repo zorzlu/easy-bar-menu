@@ -101,12 +101,28 @@ function replaceTemplateVars(content, config) {
 }
 
 // HTML template generator
-function generatePageHtml(content, pageConfig, translations) {
+function generatePageHtml(content, pageConfig, translations, config) {
     const { title, description, lang, slug, baseUrl } = pageConfig;
     const isEnglish = lang === 'en';
     const backLabel = translations?.[lang]?.staticPages?.backToMenu || (isEnglish ? 'Back to Menu' : 'Torna al Menu');
-    const langLabel = isEnglish ? '🇮🇹' : '🇬🇧';
-    const otherLang = isEnglish ? 'it' : 'en';
+    // Determine other language (cycle to next)
+    const supported = config?.settings?.languages?.supported || ['en', 'it'];
+    const definitions = config?.settings?.languages?.definitions || {};
+
+    const currentIndex = supported.indexOf(lang);
+    const nextIndex = (currentIndex + 1) % supported.length;
+    const nextLang = supported[nextIndex];
+    const nextLangDef = definitions[nextLang] || {};
+
+    // For static pages, we need relative path to assets, so we fix the path from the definition
+    // Definition is like "assets/icons/..." but we are in "pages/lang/", so we need "../../assets/icons/..."
+    let flagPath = nextLangDef.flag ? `../../${nextLangDef.flag}` : '';
+
+    const langLabel = flagPath
+        ? `<span class="lang-flag"><img src="${flagPath}" alt="${nextLangDef.name || nextLang}" class="flag-icon"></span>`
+        : (nextLangDef.name || nextLang).toUpperCase();
+
+    const otherLang = nextLang;
     const pageFile = `${slug}`;
 
     // Generate hreflang URLs
@@ -137,7 +153,7 @@ function generatePageHtml(content, pageConfig, translations) {
 <body>
     <header class="page-header">
         <div class="page-header-content">
-            <a href="../../" class="back-button">
+            <a href="../../?lang=${lang}" class="back-button">
                 <span class="back-arrow">←</span>
                 ${backLabel}
             </a>
@@ -153,7 +169,7 @@ function generatePageHtml(content, pageConfig, translations) {
         </article>
         
         <div class="footer-cta">
-            <a href="../../" class="cta-button">
+            <a href="../../?lang=${lang}" class="cta-button">
                 <span>←</span>
                 ${backLabel}
             </a>
@@ -255,7 +271,7 @@ function build() {
                     slug,
                     baseUrl
                 };
-                const pageHtml = generatePageHtml(contentHtml, pageData, translations);
+                const pageHtml = generatePageHtml(contentHtml, pageData, translations, config);
 
                 // Write output
                 fs.writeFileSync(outputPath, pageHtml, 'utf8');

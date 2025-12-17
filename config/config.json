@@ -8,7 +8,17 @@
                 "it"
             ],
             "fallback": "en",
-            "locale": "it-IT"
+            "locale": "it-IT",
+            "definitions": {
+                "it": {
+                    "name": "Italiano",
+                    "flag": "assets/icons/flag_it.svg"
+                },
+                "en": {
+                    "name": "English",
+                    "flag": "assets/icons/flag_en.svg"
+                }
+            }
         },
         "theme": {
             "mode": "light",

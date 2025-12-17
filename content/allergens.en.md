@@ -1,5 +1,7 @@
 # Allergen Information
 
+> **Important note**: If you suffer from severe food allergies, we recommend always informing the staff before ordering. The information in the menu is provided for guidance purposes and may not account for cross-contamination in the kitchen.
+
 ## 14 Regulated Food Allergens
 
 In accordance with **EU Regulation 1169/2011**, the following 14 allergens must be declared in all food products:
@@ -65,8 +67,6 @@ Molluscs and mollusc-based products: mussels, clams, oysters, squid, octopus.
 ## How to Read the Menu
 
 In our menu, allergens present in each dish are indicated with corresponding icons. You can also use the **allergen filter** to automatically hide dishes containing allergens you wish to avoid.
-
-> **Important note**: If you suffer from severe food allergies, we recommend always informing the staff before ordering. The information in the menu is provided for guidance purposes and may not account for cross-contamination in the kitchen.
 
 ---
 

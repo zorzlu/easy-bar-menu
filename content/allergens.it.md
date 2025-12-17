@@ -1,5 +1,7 @@
 # Informazioni sugli Allergeni
 
+> **Nota importante**: Se soffri di allergie alimentari gravi, ti consigliamo di informare sempre il personale prima di ordinare. Le informazioni nel menu sono fornite a scopo indicativo e potrebbero non tenere conto di contaminazioni crociate in cucina.
+
 ## 14 Allergeni Alimentari Regolamentati
 
 In conformità al **Regolamento UE 1169/2011**, i seguenti 14 allergeni devono essere dichiarati in tutti i prodotti alimentari:
@@ -65,8 +67,6 @@ Molluschi e prodotti a base di molluschi: cozze, vongole, ostriche, calamari, po
 ## Come Leggere il Menu
 
 Nel nostro menu, gli allergeni presenti in ogni piatto sono indicati con le icone corrispondenti. Puoi anche utilizzare il **filtro allergeni** per nascondere automaticamente i piatti che contengono gli allergeni che desideri evitare.
-
-> **Nota importante**: Se soffri di allergie alimentari gravi, ti consigliamo di informare sempre il personale prima di ordinare. Le informazioni nel menu sono fornite a scopo indicativo e potrebbero non tenere conto di contaminazioni crociate in cucina.
 
 ---
 

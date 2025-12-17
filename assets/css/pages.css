@@ -128,7 +128,7 @@
     padding: var(--spacing-md);
     border-radius: var(--border-radius);
     margin: var(--spacing-md) 0;
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-base);
 }
 
 .page-content blockquote strong {

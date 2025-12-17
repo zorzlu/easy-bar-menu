@@ -66,6 +66,13 @@
     transform: scale(0.95);
 }
 
+.flag-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    display: block;
+}
+
 /* Header Collapse Toggle */
 .header-collapse-toggle {
     display: flex;

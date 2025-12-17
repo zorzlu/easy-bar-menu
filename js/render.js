@@ -113,13 +113,26 @@ export function updateUILanguage() {
 
     // Update language switch button
     const langSwitch = elements.langSwitch;
-    if (lang === 'it') {
-        langSwitch.querySelector('.lang-flag').textContent = '🇬🇧';
-        langSwitch.setAttribute('aria-label', t('nav.switchLang'));
+    const langFlag = langSwitch.querySelector('.lang-flag');
+    const supported = config?.settings?.languages?.supported || ['en', 'it'];
+    const definitions = config?.settings?.languages?.definitions || {};
+
+    // Determine target language (cycle to next)
+    const currentIndex = supported.indexOf(lang);
+    const nextIndex = (currentIndex + 1) % supported.length;
+    const nextLang = supported[nextIndex];
+    const nextLangDef = definitions[nextLang] || {};
+
+    if (nextLangDef.flag) {
+        langFlag.innerHTML = `<img src="${nextLangDef.flag}" alt="${nextLangDef.name || nextLang}" class="flag-icon">`;
     } else {
-        langSwitch.querySelector('.lang-flag').textContent = '🇮🇹';
-        langSwitch.setAttribute('aria-label', t('nav.switchLang'));
+        // Fallback if no flag defined
+        langFlag.textContent = nextLang.toUpperCase();
     }
+
+    // Store target language for click handler to use
+    langSwitch.dataset.targetLang = nextLang;
+    langSwitch.setAttribute('aria-label', t('nav.switchLang') + ' (' + (nextLangDef.name || nextLang) + ')');
 
     // Update modal close button aria-label
     elements.modalClose.setAttribute('aria-label', t('ui.close'));

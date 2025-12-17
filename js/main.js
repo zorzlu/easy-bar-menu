@@ -411,9 +411,15 @@ window.addEventListener('touchstart', handleTouchStart, { passive: true });
 window.addEventListener('touchmove', handleTouchMove, { passive: true });
 
 elements.langSwitch.addEventListener('click', () => {
-    const defaultLang = state.config?.settings?.languages?.default || 'it';
-    const newLang = state.currentLanguage === 'en' ? defaultLang : 'en';
-    switchLanguage(newLang);
+    const targetLang = elements.langSwitch.dataset.targetLang;
+    if (targetLang) {
+        switchLanguage(targetLang);
+    } else {
+        // Fallback logic if attribute is missing
+        const defaultLang = state.config?.settings?.languages?.default || 'it';
+        const newLang = state.currentLanguage === 'en' ? defaultLang : 'en';
+        switchLanguage(newLang);
+    }
 });
 
 // Popstate for history support
