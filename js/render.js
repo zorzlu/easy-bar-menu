@@ -323,7 +323,7 @@ function renderInfoPage() {
     // 2. Opening Times (if separate section)
     const timeSlots = data.timeSlotsForInfo || data.timeSlots;
     if (timeSlots && timeSlots.length > 0) {
-        html += `<section class="info-section">`;
+        html += `<section class="info-section timeslot-section">`;
         html += `<h2 class="info-title">${t('info.openingHours')}</h2>`;
         html += `<div class="menu-items">`; // Start card container
 
@@ -455,7 +455,7 @@ function renderInfoPage() {
             const url = `pages/${lang}/${allergensPage.slug}.html`;
             html += `
                 <a href="${url}" class="contact-row">
-                    <span class="fluent-icon" aria-hidden="true">&#xf4f8;</span>
+                    <span class="fluent-icon" aria-hidden="true">&#xf4a2;</span>
                     ${escapeHTML(label)}
                 </a>
             `;
@@ -544,6 +544,10 @@ export function openFilterModal() {
     elements.filterTrigger.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
     elements.modalClose.focus();
+
+    // Reset scroll position
+    const modalBody = elements.filterModal.querySelector('.modal-body');
+    if (modalBody) modalBody.scrollTop = 0;
 }
 
 export function closeFilterModal() {

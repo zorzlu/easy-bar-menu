@@ -72,6 +72,10 @@ function generateRobotsTxt(baseUrl, allowIndexing) {
         lines.push('Disallow: /examples/');
         lines.push('Disallow: /content/');
         lines.push('Disallow: /node_modules/');
+        lines.push('');
+        lines.push('# Prevent indexing of tab states (duplicate content)');
+        lines.push('Disallow: /*?tab=');
+        lines.push('Disallow: /*&tab=');
     } else {
         lines.push('Disallow: /');
     }

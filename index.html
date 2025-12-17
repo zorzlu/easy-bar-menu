@@ -67,22 +67,24 @@
     <div class="app-container" id="appContainer">
         <!-- Sticky Filter Bar -->
         <div class="filter-bar" id="filterBar" hidden>
-            <div class="filter-actions">
-                <button class="filter-trigger" id="filterTrigger" aria-label="Filtra menu">
-                    <span class="fluent-icon">&#xf407;</span> <!-- filter-24-regular -->
-                    <span data-i18n="filters.filterBtn">Filtra</span>
-                </button>
-            </div>
-            <div class="active-filters no-scrollbar" id="activeFilters">
-                <!-- Filter chips injected here -->
-                <span class="filter-chip" id="dietChip" hidden>
-                    <span class="chip-icon"></span>
-                    <span class="chip-label"></span>
-                </span>
-                <span class="filter-chip" id="allergenChip" hidden>
-                    <span class="chip-icon">⚠️</span>
-                    <span class="chip-label"></span>
-                </span>
+            <div class="filter-bar-content">
+                <div class="filter-actions">
+                    <button class="filter-trigger" id="filterTrigger" aria-label="Filtra menu">
+                        <span class="fluent-icon">&#xf407;</span> <!-- filter-24-regular -->
+                        <span data-i18n="filters.filterBtn">Filtra</span>
+                    </button>
+                </div>
+                <div class="active-filters no-scrollbar" id="activeFilters">
+                    <!-- Filter chips injected here -->
+                    <span class="filter-chip" id="dietChip" hidden>
+                        <span class="chip-icon"></span>
+                        <span class="chip-label"></span>
+                    </span>
+                    <span class="filter-chip" id="allergenChip" hidden>
+                        <span class="chip-icon">⚠️</span>
+                        <span class="chip-label"></span>
+                    </span>
+                </div>
             </div>
         </div>
 

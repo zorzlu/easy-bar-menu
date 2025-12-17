@@ -148,19 +148,16 @@ function switchTab(newTab) {
 
     state.currentTab = newTab;
 
+    // Persist tab state to URL while preserving other params (like lang)
+    const url = new URL(window.location);
+    url.searchParams.set('tab', newTab);
+    window.history.replaceState({}, '', url);
+
     const announceName = t(`tab${newTab.charAt(0).toUpperCase() + newTab.slice(1)}`);
     announceToSR(announceName);
 
-    // We assume unified data is already loaded so we don't need to fetch per tab anymore
-    // unless we want to refetch everything.
-    // For now, simpler to just render.
-    if (state.data[newTab] || newTab === 'info') {
-        render();
-        window.scrollTo({ top: 0, behavior: 'instant' });
-    } else {
-        // Should not happen if unified fetch works
-        fetchUnifiedData(true);
-    }
+    render();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function handleScroll() {
@@ -206,12 +203,24 @@ function switchLanguage(newLang) {
         return;
     }
 
-    const newUrl = newLang === defaultLang ? '/' : `/?lang=${newLang}`;
-    history.pushState({ lang: newLang }, '', newUrl);
+    // Update URL while preserving tab state
+    const url = new URL(window.location);
+    if (newLang === defaultLang) {
+        url.searchParams.delete('lang');
+    } else {
+        url.searchParams.set('lang', newLang);
+    }
+    window.history.pushState({ lang: newLang }, '', url);
 
     state.currentLanguage = newLang;
     savePreferences(state);
-    updateUILanguage();
+
+    // Reload translations and re-render
+    loadTranslations().then(() => {
+        updateUILanguage();
+        updateActiveFilterDisplay(); // Update filter labels if any
+        render();
+    });
 }
 
 // Handlers for Modal Actions (needs access to render)
@@ -258,17 +267,49 @@ function clearFiltersImmediate() {
 async function init() {
     try {
         await loadConfig();
+
+        // Language Init from URL or Storage
+        const urlParams = new URLSearchParams(window.location.search);
+        const langParam = urlParams.get('lang');
+        const supported = state.config.i18n.supportedLanguages;
+
+        if (langParam && supported.includes(langParam)) {
+            state.currentLanguage = langParam;
+        } else {
+            const stored = localStorage.getItem('appLanguage');
+            if (stored && supported.includes(stored)) {
+                state.currentLanguage = stored;
+            } else {
+                state.currentLanguage = state.config.i18n.defaultLanguage;
+            }
+        }
+
         validateAndSetLanguage();
         await loadTranslations();
 
-        // Render static content IMMEDIATELY (logos, colors, etc.)
+        // Render static content IMMEDIATELY
         updateThemeColor();
         updateHeroContent();
-        updateUILanguage(); // Updates data-i18n texts
+        updateUILanguage();
         updateActiveFilterDisplay();
 
         updateKitchenStatus();
         setInterval(updateKitchenStatus, 60000);
+
+        // Tab Init from URL
+        const tabParam = urlParams.get('tab');
+        const validTabs = ['kitchen', 'bar', 'info'];
+        if (tabParam && validTabs.includes(tabParam)) {
+            state.currentTab = tabParam;
+        } else {
+            state.currentTab = 'kitchen';
+        }
+
+        // Update Nav UI immediately to reflect initial tab
+        elements.navItems.forEach(btn => {
+            if (btn.dataset.target === state.currentTab) btn.classList.add('active');
+            else btn.classList.remove('active');
+        });
 
         // Dynamic Hero Height
         const heroObserver = new ResizeObserver(entries => {
@@ -282,8 +323,6 @@ async function init() {
         });
         if (elements.welcomeHero) heroObserver.observe(elements.welcomeHero);
         if (elements.welcomeHeroContent) heroObserver.observe(elements.welcomeHeroContent);
-
-        if (!state.currentTab) state.currentTab = 'kitchen';
 
         await fetchUnifiedData(false);
 

@@ -25,6 +25,10 @@
     margin-bottom: var(--spacing-lg);
 }
 
+.info-section.timeslot-section {
+    margin-top: var(--spacing-md);
+}
+
 .info-section-card {
     background: var(--color-surface);
     border-radius: var(--border-radius);
@@ -46,7 +50,7 @@
     font-size: var(--font-size-lg);
     font-weight: 700;
     color: var(--color-primary);
-    margin-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
 }
 
 .info-text {
@@ -124,7 +128,7 @@
     display: flex;
     flex-direction: column;
     gap: var(--spacing-sm);
-    margin-top: var(--spacing-lg);
+    /* margin-top: var(--spacing-lg); */
 }
 
 .contact-row {
@@ -150,7 +154,6 @@
     flex-shrink: 0;
     display: block;
     margin: 0 0.175rem;
-    filter: brightness(0) saturate(100%) invert(37%) sepia(93%) saturate(1352%) hue-rotate(196deg) brightness(101%) contrast(101%);
 }
 
 .link-name {
