@@ -320,7 +320,8 @@ export function processMenuData(rawData, categoryData = []) {
             order: index, // Use row index for ordering (preserves CSV order)
             allergens: getAllergens(row),
             allergenKeys: getAllergenKeys(row),
-            tipo: tipo
+            tipo: tipo,
+            noGlutenOption: isTruthy(row.no_gluten_option)
         });
     });
 

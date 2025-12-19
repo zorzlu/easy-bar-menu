@@ -38,7 +38,8 @@
             "all_11_sesame": "all_11_sesame",
             "all_12_sulfites": "all_12_sulfites",
             "all_13_lupin": "all_13_lupin",
-            "all_14_mollusks": "all_14_mollusks"
+            "all_14_mollusks": "all_14_mollusks",
+            "no_gluten_option": "no_gluten_option"
         },
         "types": {
             "time_slot": "time_slot",
@@ -106,7 +107,8 @@
             "all_11_sesame": "all_11_sesamo",
             "all_12_sulfites": "all_12_solfiti",
             "all_13_lupin": "all_13_lupini",
-            "all_14_mollusks": "all_14_molluschi"
+            "all_14_mollusks": "all_14_molluschi",
+            "no_gluten_option": "opzione_senza_glutine"
         },
         "types": {
             "time_slot": "fascia_oraria",

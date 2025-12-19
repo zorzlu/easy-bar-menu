@@ -9,7 +9,8 @@
         "retry": "Retry",
         "updated": "Menu updated",
         "contacts": "Contacts",
-        "welcomeMessage": "Welcome!"
+        "welcomeMessage": "Welcome!",
+        "noGlutenOption": "Gluten-free option available"
     },
     "nav": {
         "kitchen": "Kitchen",
@@ -50,7 +51,7 @@
         "legal": "Legal"
     },
     "menu": {
-        "allergenFooter": "Have allergies or intolerances? For the complete list of allergens and cross-contamination info, please ask staff.",
+        "allergenFooter": "In case of food intolerances, allergies, or favism, please inform the waiting staff.",
         "allergenMoreInfo": "More info"
     },
     "status": {

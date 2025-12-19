@@ -26,7 +26,7 @@
             "themeColor": "#A6507E"
         },
         "fonts": {
-            "primary": "Inter, sans-serif"
+            "primary": "DM Sans, sans-serif"
         },
         "formats": {
             "currency": "EUR",
@@ -59,7 +59,7 @@
         "searchEngineIndexing": false
     },
     "inputData": {
-        "menuUrl": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRyK90FkAcIV3fRIq854TaE0n4PChD8jPhoSnGKJKhMco9cx4mhGljtG16zd9yTFm6m3prTl1zST1dS/pub?gid=1317594543&single=true&output=csv",
+        "menuUrl": "https://docs.google.com/spreadsheets/d/e/2PACX-1vSFho5epvb3RjZnt9ilXc0EroZafsams148n0dUge6IXJrQFOEDB7_6KvtNHO1OkxhmJsIXOHdiuGxZ/pub?gid=1317594543&single=true&output=csv",
         "fallbackFile": "data/fallback_menu.csv",
         "csvLanguage": "it",
         "csvNumberFormat": "it"

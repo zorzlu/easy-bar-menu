@@ -72,7 +72,19 @@ function applyFiltersToData(categories) {
 
                 // Allergen exclusion filter
                 if (excludeAllergens.length > 0) {
-                    const hasExcludedAllergen = item.allergenKeys.some(key => excludeAllergens.includes(key));
+                    const hasExcludedAllergen = item.allergenKeys.some(key => {
+                        // Check if this allergen is gluten
+                        // item.allergenKeys are keys from ALLERGENS in i18n.js
+                        const allergenConfig = ALLERGENS[key];
+                        // Comparison: use the 'key' property from config ('gluten', 'milk', etc.)
+                        const isGluten = allergenConfig && allergenConfig.key === 'gluten';
+
+                        if (isGluten && item.noGlutenOption) {
+                            return false; // Don't exclude if it has no-gluten option
+                        }
+                        return excludeAllergens.includes(key);
+                    });
+
                     if (hasExcludedAllergen) return false;
                 }
 
@@ -270,8 +282,9 @@ export function render() {
             const hasDietBadge = foodTypeLabel;
             const hasAllergens = item.allergens && item.allergens.length > 0;
 
-            if (hasDietBadge || hasAllergens) {
+            if (hasDietBadge || hasAllergens || item.noGlutenOption) {
                 footerHtml = '<div class="item-footer">';
+
                 if (hasDietBadge) {
                     footerHtml += `
                         <span class="food-type-badge ${foodType.class}">
@@ -282,6 +295,14 @@ export function render() {
                 }
                 if (hasAllergens) {
                     footerHtml += renderAllergens(item.allergens);
+                }
+
+                if (item.noGlutenOption) {
+                    footerHtml += `
+                        <div class="no-gluten-option-row">
+                            ${t('ui.noGlutenOption')}
+                        </div>
+                    `;
                 }
                 footerHtml += '</div>';
             }
