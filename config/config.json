@@ -213,6 +213,11 @@
             "icon": "",
             "class": ""
         },
+        "drink_not_specified": {
+            "labelKey": "",
+            "icon": "",
+            "class": ""
+        },
         "vegetarian": {
             "labelKey": "filters.dietVegetarian",
             "icon": "🌿",
