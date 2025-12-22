@@ -63,10 +63,10 @@ function applyFiltersToData(categories) {
         .map(cat => {
             const filteredItems = cat.items.filter(item => {
                 // Diet filter
-                if (diet === 'vegan' && item.tipo !== 'vegan' && item.tipo !== 'drink_not_specified') {
+                if (diet === 'vegan' && item.tipo !== 'vegan' && item.tipo !== 'unspecified') {
                     return false;
                 }
-                if (diet === 'vegetarian' && item.tipo !== 'vegetarian' && item.tipo !== 'vegan' && item.tipo !== 'drink_not_specified') {
+                if (diet === 'vegetarian' && item.tipo !== 'vegetarian' && item.tipo !== 'vegan' && item.tipo !== 'unspecified') {
                     return false;
                 }
 

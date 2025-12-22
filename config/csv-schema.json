@@ -51,7 +51,7 @@
         "values": {
             "vegan": "vegan",
             "vegetarian": "vegetarian",
-            "drink_not_specified": "drink_not_specified",
+            "unspecified": "unspecified",
             "standard": "standard",
             "primary": "primary",
             "secondary": "secondary",
@@ -120,7 +120,7 @@
         "values": {
             "vegan": "vegano",
             "vegetarian": "vegetariano",
-            "drink_not_specified": "drink_no_specificato",
+            "unspecified": "non_specificato",
             "standard": "standard",
             "primary": "primario",
             "secondary": "secondario",

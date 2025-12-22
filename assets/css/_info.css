@@ -30,7 +30,7 @@
 }
 
 .info-section-card {
-    background: var(--color-surface);
+    background: var(--color-bg-card);
     border-radius: var(--border-radius);
     padding: var(--spacing-md);
 }
@@ -40,7 +40,7 @@
 }
 
 .info-card {
-    background: var(--color-surface);
+    background: var(--color-bg-card);
     border-radius: var(--border-radius);
     padding: var(--spacing-md);
     margin-bottom: var(--spacing-md);
@@ -49,13 +49,13 @@
 .info-title {
     font-size: var(--font-size-lg);
     font-weight: 700;
-    color: var(--color-primary);
+    color: var(--color-text-main);
     margin-bottom: var(--spacing-sm);
 }
 
 .info-text {
     font-size: var(--font-size-base);
-    color: var(--color-secondary);
+    color: var(--color-text-dim);
     line-height: 1.6;
     margin: 0;
 }
@@ -73,7 +73,7 @@
     align-items: baseline;
     gap: 4px;
     padding: 4px 0;
-    border-bottom: 1px solid var(--color-separator);
+    border-bottom: 1px solid var(--color-divider);
 }
 
 .time-row:last-child {
@@ -82,12 +82,12 @@
 
 .time-days {
     font-weight: 400;
-    color: var(--color-secondary);
+    color: var(--color-text-dim);
     flex-shrink: 0;
 }
 
 .time-hours {
-    color: var(--color-secondary);
+    color: var(--color-text-dim);
     text-align: right;
 }
 
@@ -115,10 +115,10 @@
     align-items: center;
     gap: 8px;
     padding: 10px 16px;
-    background: var(--color-surface);
+    background: var(--color-bg-card);
     border-radius: 20px;
     text-decoration: none;
-    color: var(--color-primary);
+    color: var(--color-text-main);
     font-weight: 500;
     box-shadow: var(--shadow-card);
 }
@@ -135,14 +135,14 @@
     display: flex;
     align-items: center;
     gap: var(--spacing-sm);
-    color: var(--color-secondary);
+    color: var(--color-text-dim);
     font-size: var(--font-size-sm);
     text-decoration: none;
 }
 
 .contact-row .fluent-icon {
     font-size: 1.125rem;
-    color: var(--color-accent);
+    color: var(--color-text-brand);
     flex-shrink: 0;
     width: 1.25rem;
     text-align: center;
@@ -158,10 +158,10 @@
 
 .link-name {
     font-weight: 600;
-    color: var(--color-primary);
+    color: var(--color-text-main);
     margin-right: 4px;
 }
 
 .link-label {
-    color: var(--color-secondary);
+    color: var(--color-text-dim);
 }

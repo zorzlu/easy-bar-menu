@@ -36,21 +36,73 @@
     --md-sys-color-surface-container-high: #f4e4e9;
     --md-sys-color-surface-container-highest: #eedfe3;
 
-    /* Semantic Mappings */
-    --color-bg: var(--md-sys-color-surface);
-    --color-surface: var(--md-sys-color-surface-container-lowest);
-    --color-primary: var(--md-sys-color-on-surface);
-    --color-secondary: var(--md-sys-color-on-surface-variant);
-    --color-tertiary: var(--md-sys-color-outline);
-    --color-accent: var(--md-sys-color-primary);
-    --color-border: var(--md-sys-color-outline-variant);
-    --color-separator: var(--md-sys-color-surface-variant);
-    --color-active-bg: var(--md-sys-color-secondary-container);
-    --color-success: #34c759;
-    --color-error: var(--md-sys-color-error);
-    --color-error-bg: var(--md-sys-color-error-container);
-    --color-vegetarian: #4caf50;
-    --color-vegetarian-bg: #e8f5e9;
-    --color-vegan: #2e7d32;
-    --color-vegan-bg: #c8e6c9;
+    /* ==============================================
+       Semantic Application Mappings
+       ============================================== */
+
+    /* Typography */
+    --color-text-main: var(--md-sys-color-on-surface);
+    --color-text-dim: var(--md-sys-color-on-surface-variant);
+    --color-text-muted: var(--md-sys-color-tertiary);
+    --color-text-brand: var(--md-sys-color-primary);
+    --color-text-inverse: var(--md-sys-color-on-primary-container);
+    --color-text-on-info: var(--md-sys-color-on-tertiary-container);
+    --color-text-accent-alt: var(--md-sys-color-tertiary);
+
+    /* Backgrounds: App & Structure */
+    --color-bg-body: var(--md-sys-color-surface-container);
+    /* Global body background */
+    --color-bg-header: var(--md-sys-color-surface-container);
+    /* Sticky header & hero */
+    --color-bg-app-sheet: var(--md-sys-color-surface);
+    /* The white sheet sitting on the body */
+
+    /* Backgrounds: Surfaces & Components */
+    --color-bg-card: var(--md-sys-color-surface-container-lowest);
+    /* Menu items, Cards */
+    --color-bg-surface-subtle: var(--md-sys-color-surface-container-low);
+    /* Accordions, Filter Bar */
+    --color-bg-surface-hover: var(--md-sys-color-surface-container-highest);
+    /* Hover states */
+    --color-bg-segment: var(--md-sys-color-surface-container-high);
+    /* Segmented controls */
+
+    /* Chrome & Features */
+    --color-bg-nav: var(--md-sys-color-primary-container);
+    /* Bottom Navigation Bar */
+    --color-bg-scrim: var(--md-sys-color-surface-container);
+    /* Bottom Scrim (Gradient start) */
+
+    /* Chips & Feedback */
+    --color-bg-chip: var(--md-sys-color-surface-variant);
+    /* Filter chips default state (distinct from bg-app-sheet) */
+    --color-bg-chip-info: var(--md-sys-color-tertiary-container);
+    /* Allergen chips, Status cards */
+
+    /* Interactive & States */
+    --color-nav-item-active-bg: var(--md-sys-color-on-primary-container);
+    --color-nav-item-active-fg: var(--md-sys-color-primary-container);
+
+    /* Decorative */
+    --color-gradient-start: var(--md-sys-color-secondary-container);
+    --color-gradient-end: var(--md-sys-color-primary-container);
+
+    /* Borders & Dividers */
+    --color-border-subtle: var(--md-sys-color-outline-variant);
+    --color-border-strong: var(--md-sys-color-outline);
+    --color-divider: var(--md-sys-color-surface-variant);
+
+    /* Status & Domain */
+    --color-status-success: #34c759;
+    --color-status-error: var(--md-sys-color-error);
+    --color-bg-error: var(--md-sys-color-error-container);
+
+    --color-veg-text: #4caf50;
+    --color-veg-bg: #e8f5e9;
+    --color-veg-vegan-text: #2e7d32;
+    --color-veg-vegan-bg: #c8e6c9;
+
+    /* Shadows */
+    --color-shadow: var(--md-sys-color-shadow);
+    --color-scrim: var(--md-sys-color-scrim);
 }

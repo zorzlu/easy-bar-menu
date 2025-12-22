@@ -167,8 +167,8 @@ body {
     font-family: var(--font-family);
     font-size: var(--font-size-base);
     line-height: 1.5;
-    color: var(--color-primary);
-    background-color: var(--md-sys-color-surface-container);
+    color: var(--color-text-main);
+    background-color: var(--color-bg-body);
     min-height: 100vh;
     margin: 0;
     padding: 0;
@@ -199,11 +199,11 @@ body {
 
 /* Focus */
 :focus-visible {
-    outline: 2px solid var(--color-accent);
+    outline: 2px solid var(--color-text-brand);
     outline-offset: 2px;
 }
 
 button:focus-visible {
-    outline: 2px solid var(--color-accent);
+    outline: 2px solid var(--color-text-brand);
     outline-offset: 2px;
 }

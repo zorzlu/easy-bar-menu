@@ -35,7 +35,7 @@
         },
         "ui": {
             "collapsedCategories": {
-                "bar": true,
+                "bar": false,
                 "kitchen": true
             },
             "autoCollapseOthers": {
@@ -213,7 +213,7 @@
             "icon": "",
             "class": ""
         },
-        "drink_not_specified": {
+        "unspecified": {
             "labelKey": "",
             "icon": "",
             "class": ""

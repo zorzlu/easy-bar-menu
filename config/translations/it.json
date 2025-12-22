@@ -9,7 +9,8 @@
         "retry": "Riprova",
         "updated": "Menu aggiornato",
         "contacts": "Contatti",
-        "welcomeMessage": "Benvenuti!"
+        "welcomeMessage": "Benvenuti!",
+        "noGlutenOption": "Opzione senza glutine disponibile"
     },
     "nav": {
         "kitchen": "Cucina",

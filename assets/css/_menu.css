@@ -8,8 +8,8 @@
 }
 
 .menu-header-card {
-    background: linear-gradient(135deg, var(--md-sys-color-secondary-container), var(--md-sys-color-primary-container));
-    color: var(--md-sys-color-on-primary-container);
+    background: linear-gradient(135deg, var(--color-gradient-start), var(--color-gradient-end));
+    color: var(--color-text-inverse);
     padding: var(--spacing-md);
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-card);
@@ -34,13 +34,13 @@
 .menu-header-plain .menu-header-title {
     font-size: var(--font-size-lg);
     font-weight: 700;
-    color: var(--color-primary);
+    color: var(--color-text-brand);
     margin-bottom: 4px;
 }
 
 .menu-header-plain .menu-header-text {
     font-size: var(--font-size-base);
-    color: var(--color-secondary);
+    color: var(--color-text-dim);
 }
 
 .category-section {
@@ -50,7 +50,7 @@
 .category-title {
     font-size: var(--font-size-xl);
     font-weight: 800;
-    color: var(--color-primary);
+    color: var(--color-text-main);
     margin-bottom: var(--spacing-md);
     margin-top: var(--spacing-sm);
     padding-left: 16px;
@@ -79,7 +79,7 @@
 }
 
 .menu-item {
-    background: var(--color-surface);
+    background: var(--color-bg-card);
     padding: var(--spacing-sm) var(--spacing-md);
     border-radius: 4px;
 }
@@ -98,23 +98,30 @@
 
 .item-header {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: space-between;
     align-items: baseline;
-    gap: 4px var(--spacing-md);
+    gap: var(--spacing-md);
 }
 
-.item-name-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    flex: 1;
+@media (max-width: 370px) {
+    .item-header {
+        flex-wrap: wrap;
+        gap: unset;
+    }
+
+    .item-header .item-name {
+        flex: 1 1 100%;
+        margin-bottom: 2px;
+    }
+
 }
+
 
 .item-name {
     font-size: var(--font-size-base);
     font-weight: 600;
-    color: var(--color-primary);
+    color: var(--color-text-main);
     line-height: 1.3;
     margin: 0;
 }
@@ -122,14 +129,14 @@
 .item-price {
     font-size: var(--font-size-base);
     font-weight: 600;
-    color: var(--color-primary);
+    color: var(--color-text-main);
     white-space: nowrap;
     flex-shrink: 0;
 }
 
 .item-description {
     font-size: var(--font-size-sm);
-    color: var(--color-secondary);
+    color: var(--color-text-dim);
     line-height: 1.35;
     margin: 2px 0 0 0;
 }
@@ -154,13 +161,13 @@
 }
 
 .food-type-badge.vegetarian {
-    background: var(--color-vegetarian-bg);
-    color: var(--color-vegetarian);
+    background: var(--color-veg-bg);
+    color: var(--color-veg-text);
 }
 
 .food-type-badge.vegan {
-    background: var(--color-vegan-bg);
-    color: var(--color-vegan);
+    background: var(--color-veg-vegan-bg);
+    color: var(--color-veg-vegan-text);
 }
 
 .food-type-icon {
@@ -177,11 +184,11 @@
     align-items: center;
     gap: 4px;
     padding: 4px 8px;
-    background: var(--md-sys-color-tertiary-container);
+    background: var(--color-bg-chip-info);
     border-radius: 6px;
     font-size: 0.7rem;
     font-weight: 600;
-    color: var(--md-sys-color-on-tertiary-container);
+    color: var(--color-text-on-info);
     line-height: 1;
 }
 
@@ -195,14 +202,14 @@
     margin-top: 4px;
     font-size: 0.7rem;
     font-weight: 600;
-    color: var(--md-sys-color-on-tertiary-container);
+    color: var(--color-text-on-info);
     line-height: 1.3;
 }
 
 .menu-footer-info {
     text-align: center;
     padding: var(--spacing-xl) var(--spacing-md);
-    color: var(--color-tertiary);
+    color: var(--color-text-muted);
     font-size: var(--font-size-sm);
 }
 
@@ -247,8 +254,8 @@ details.category-accordion>summary {
     /* Text styling */
     font-size: var(--font-size-lg);
     font-weight: 700;
-    color: var(--color-primary);
-    background-color: var(--md-sys-color-surface-container-low);
+    color: var(--color-text-main);
+    background-color: var(--color-bg-surface-subtle);
 
     transition: border-radius 0.2s ease, margin-bottom 0.2s ease, background-color 0.2s ease;
 }
@@ -259,7 +266,7 @@ details.category-accordion>summary::-webkit-details-marker {
 
 /* Hover color matching header toggle */
 details.category-accordion>summary:hover {
-    background-color: var(--md-sys-color-surface-container-highest);
+    background-color: var(--color-bg-surface-hover);
     /* Fallback/match toggle hover */
 }
 
@@ -268,7 +275,7 @@ details.category-accordion>summary .accordion-icon {
     align-items: center;
     font-size: 1.2rem;
     /* Adjust icon size if needed */
-    color: var(--color-secondary);
+    color: var(--color-text-dim);
     transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
     /* Invert initial direction if needed, assuming icon is pointing down/up */
     transform: rotate(180deg);
@@ -281,7 +288,7 @@ details.category-accordion[open]>summary {
        So just keep it 4px (standard). */
     border-radius: var(--border-radius) var(--border-radius) 4px 4px;
     margin-bottom: 2px;
-    background: var(--color-surface);
+    background: var(--color-bg-card);
     /* Solid background when open */
 }
 
@@ -310,5 +317,5 @@ details.category-accordion>.menu-items {
 }
 
 details.category-accordion[open] {
-    filter: drop-shadow(0 1px 2px var(--md-sys-color-surface-container));
+    filter: drop-shadow(0 1px 2px var(--color-bg-scrim));
 }
