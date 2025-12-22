@@ -90,6 +90,7 @@
 
 .menu-item:last-child {
     border-radius: 4px 4px var(--border-radius) var(--border-radius);
+    margin-bottom: var(--spacing-md);
 }
 
 .menu-item:only-child {

@@ -358,74 +358,6 @@ function setupAccordionAnimations() {
         ? autoCollapseConfig[tab]
         : !!autoCollapseConfig;
 
-    // Helper: Collapse Animation
-    const collapse = (details, content) => {
-        if (!details.hasAttribute('open')) return;
-
-        // 1. Lock height and margin to current state
-        const startHeight = content.scrollHeight;
-        content.style.height = `${startHeight}px`;
-        content.style.marginBottom = 'var(--spacing-md)'; // Start from open margin
-        content.style.opacity = '1';
-
-        // 2. Force reflow
-        void content.offsetHeight;
-
-        // 3. Animate to 0
-        content.style.height = '0';
-        content.style.opacity = '0';
-        content.style.marginBottom = '0';
-
-        // Animate details margin if needed (we rely on CSS transition on [open] removal mostly, but we can help it)
-        // details.style.marginBottom is handled by CSS transition when 'open' is removed?
-        // Actually, CSS says details[open] { margin-bottom: 2px }. Wait.
-        // Step 229 removed details[open] margin change. 
-        // Step 237 restored details:last-child { margin-bottom: var(--spacing-xl) }.
-        // The normal margin is 2px.
-        // So details margin effectively stays 2px unless last-child.
-        // So we don't need to animate details.style.marginBottom.
-
-        // 4. Cleanup after transition
-        content.addEventListener('transitionend', function onEnd() {
-            details.removeAttribute('open');
-            content.style.height = '';
-            content.style.opacity = '';
-            content.style.marginBottom = ''; // Reset to default (0)
-            content.removeEventListener('transitionend', onEnd);
-        }, { once: true });
-    };
-
-    // Helper: Expand Animation
-    const expand = (details, content) => {
-        if (details.hasAttribute('open')) return;
-
-        // 1. Open
-        details.setAttribute('open', '');
-
-        // 2. Initial state for animation
-        content.style.height = '0';
-        content.style.opacity = '0';
-        content.style.marginBottom = '0';
-
-        // 3. Force reflow
-        void content.offsetHeight;
-
-        // 4. Animate to target
-        const targetHeight = content.scrollHeight;
-        content.style.height = `${targetHeight}px`;
-        content.style.opacity = '1';
-        content.style.marginBottom = 'var(--spacing-md)';
-
-        // 5. Cleanup
-        content.addEventListener('transitionend', function onEnd() {
-            content.style.height = ''; // Auto height
-            content.style.opacity = '';
-            // Keep margin-bottom applied while open
-            content.style.marginBottom = 'var(--spacing-md)';
-            content.removeEventListener('transitionend', onEnd);
-        }, { once: true });
-    };
-
     accordions.forEach(details => {
         const summary = details.querySelector('summary');
         const content = details.querySelector('.menu-items');
@@ -435,37 +367,43 @@ function setupAccordionAnimations() {
         summary.addEventListener('click', (e) => {
             e.preventDefault(); // Control toggling manually
 
-            if (details.hasAttribute('open')) {
-                collapse(details, content);
-            } else {
-                // Determine if we need to collapse others
-                if (autoCollapse) {
-                    let scrollAdjustment = 0;
-                    const currentIndex = Array.from(accordions).indexOf(details);
+            const isCurrentlyOpen = details.hasAttribute('open');
 
-                    accordions.forEach((otherDetails, index) => {
+            if (isCurrentlyOpen) {
+                // Just close this one - instant
+                details.removeAttribute('open');
+            } else {
+                // Capture the position before any changes
+                const summaryRect = summary.getBoundingClientRect();
+                const initialTop = summaryRect.top;
+
+                // Open the clicked section instantly
+                details.setAttribute('open', '');
+
+                // If auto-collapse is enabled, close all others instantly
+                if (autoCollapse) {
+                    accordions.forEach((otherDetails) => {
                         if (otherDetails !== details && otherDetails.hasAttribute('open')) {
-                            const otherContent = otherDetails.querySelector('.menu-items');
-                            if (otherContent) {
-                                // If a preceding section is closing, track its height to correct scroll
-                                if (index < currentIndex) {
-                                    const style = window.getComputedStyle(otherContent);
-                                    const marginBottom = parseFloat(style.marginBottom) || 0;
-                                    const marginTop = parseFloat(style.marginTop) || 0;
-                                    // Precise calculation of lost height
-                                    scrollAdjustment += otherContent.scrollHeight + marginBottom + marginTop;
-                                }
-                                collapse(otherDetails, otherContent);
-                            }
+                            otherDetails.removeAttribute('open');
                         }
                     });
-
-                    // Counteract the upward shift due to collapsing sections above
-                    if (scrollAdjustment > 0) {
-                        window.scrollBy({ top: -scrollAdjustment, behavior: 'smooth' });
-                    }
                 }
-                expand(details, content);
+
+                // After all DOM changes, check if position shifted
+                // Use requestAnimationFrame to ensure layout is complete
+                requestAnimationFrame(() => {
+                    const finalRect = summary.getBoundingClientRect();
+                    const finalTop = finalRect.top;
+                    const shift = finalTop - initialTop;
+
+                    // If the clicked element moved, scroll to compensate
+                    if (Math.abs(shift) > 1) {
+                        window.scrollBy({
+                            top: shift,
+                            behavior: 'instant'
+                        });
+                    }
+                });
             }
         });
     });
@@ -519,7 +457,7 @@ function renderInfoPage() {
         }
     });
 
-    html += `<div class="squiggle"><svg aria-hidden="true" width="100%" height="8" fill="none" xmlns="http://www.w3.org/2000/svg"><pattern id="a" width="91" height="8" patternUnits="userSpaceOnUse"><g clip-path="url(#clip0_2426_11367)"><path d="M114 4c-5.067 4.667-10.133 4.667-15.2 0S88.667-.667 83.6 4 73.467 8.667 68.4 4 58.267-.667 53.2 4 43.067 8.667 38 4 27.867-.667 22.8 4 12.667 8.667 7.6 4-2.533-.667-7.6 4s-10.133 4.667-15.2 0S-32.933-.667-38 4s-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133 4.667-15.2 0" stroke="#E1E3E1" stroke-linecap="square"></path></g></pattern><rect width="100%" height="100%" fill="url(#a)"></rect></svg></div>`;
+    html += `<div class="squiggle"><svg aria-hidden="true" width="100%" height="8" fill="none" xmlns="http://www.w3.org/2000/svg"><pattern id="a" width="91" height="8" patternUnits="userSpaceOnUse"><g clip-path="url(#clip0_2426_11367)"><path d="M114 4c-5.067 4.667-10.133 4.667-15.2 0S88.667-.667 83.6 4 73.467 8.667 68.4 4 58.267-.667 53.2 4 43.067 8.667 38 4 27.867-.667 22.8 4 12.667 8.667 7.6 4-2.533-.667-7.6 4s-10.133 4.667-15.2 0S-32.933-.667-38 4s-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133 4.667-15.2 0-10.133 4.667-15.2 0-10.133 4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133 4.667-15.2 0" stroke="#E1E3E1" stroke-linecap="square"></path></g></pattern><rect width="100%" height="100%" fill="url(#a)"></rect></svg></div>`;
 
     // 2. Opening Times (if separate section)
     const timeSlots = data.timeSlotsForInfo || data.timeSlots;
@@ -631,7 +569,7 @@ function renderInfoPage() {
         html += `</section>`;
     }
 
-    html += `<div class="squiggle"><svg aria-hidden="true" width="100%" height="8" fill="none" xmlns="http://www.w3.org/2000/svg"><pattern id="a" width="91" height="8" patternUnits="userSpaceOnUse"><g clip-path="url(#clip0_2426_11367)"><path d="M114 4c-5.067 4.667-10.133 4.667-15.2 0S88.667-.667 83.6 4 73.467 8.667 68.4 4 58.267-.667 53.2 4 43.067 8.667 38 4 27.867-.667 22.8 4 12.667 8.667 7.6 4-2.533-.667-7.6 4s-10.133 4.667-15.2 0S-32.933-.667-38 4s-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133 4.667-15.2 0" stroke="#E1E3E1" stroke-linecap="square"></path></g></pattern><rect width="100%" height="100%" fill="url(#a)"></rect></svg></div>`;
+    html += `<div class="squiggle"><svg aria-hidden="true" width="100%" height="8" fill="none" xmlns="http://www.w3.org/2000/svg"><pattern id="a" width="91" height="8" patternUnits="userSpaceOnUse"><g clip-path="url(#clip0_2426_11367)"><path d="M114 4c-5.067 4.667-10.133 4.667-15.2 0S88.667-.667 83.6 4 73.467 8.667 68.4 4 58.267-.667 53.2 4 43.067 8.667 38 4 27.867-.667 22.8 4 12.667 8.667 7.6 4-2.533-.667-7.6 4s-10.133 4.667-15.2 0S-32.933-.667-38 4s-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133 4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133 4.667-15.2 0-10.133 4.667-15.2 0-10.133 4.667-15.2 0-10.133 4.667-15.2 0-10.133 4.667-15.2 0-10.133 4.667-15.2 0-10.133 4.667-15.2 0-10.133 4.667-15.2 0-10.133 4.667-15.2 0-10.133 4.667-15.2 0-10.133 4.667-15.2 0-10.133 4.667-15.2 0-10.133 4.667-15.2 0-10.133 4.667-15.2 0-10.133 4.667-15.2 0-10.133 4.667-15.2 0-10.133 4.667-15.2 0-10.133 4.667-15.2 0" stroke="#E1E3E1" stroke-linecap="square"></path></g></pattern><rect width="100%" height="100%" fill="url(#a)"></rect></svg></div>`;
 
     // 4. Legal / Footer Links - find pages from staticPages array
     const staticPages = config?.pages?.staticPages || [];
