@@ -15,6 +15,73 @@
 const fs = require('fs');
 const path = require('path');
 
+const ROOT_DIR = path.join(__dirname, '..');
+const COLORS_CSS_PATH = path.join(ROOT_DIR, 'assets/css/colors.css');
+
+/**
+ * Parse CSS file and extract all CSS variables
+ */
+function parseCSSVariables(cssContent) {
+    const variables = {};
+    const regex = /--([\w-]+):\s*([^;]+);/g;
+    let match;
+    
+    while ((match = regex.exec(cssContent)) !== null) {
+        const varName = match[1];
+        const varValue = match[2].trim();
+        variables[varName] = varValue;
+    }
+    
+    return variables;
+}
+
+/**
+ * Resolve a CSS variable to its final value (recursive)
+ */
+function resolveCSSVariable(varName, variables, depth = 0) {
+    if (depth > 10) {
+        console.warn(`Warning: Maximum recursion depth reached for variable: ${varName}`);
+        return null;
+    }
+
+    const value = variables[varName];
+    if (!value) {
+        console.warn(`Warning: Variable --${varName} not found`);
+        return null;
+    }
+
+    // If value is a var() reference, resolve it
+    const varMatch = value.match(/var\(--([^)]+)\)/);
+    if (varMatch) {
+        const referencedVar = varMatch[1];
+        return resolveCSSVariable(referencedVar, variables, depth + 1);
+    }
+
+    // Otherwise, return the value as-is
+    return value;
+}
+
+/**
+ * Get theme color from colors.css
+ */
+function getThemeColorFromCSS() {
+    try {
+        const cssContent = fs.readFileSync(COLORS_CSS_PATH, 'utf8');
+        const variables = parseCSSVariables(cssContent);
+        const themeColor = resolveCSSVariable('color-bg-header', variables);
+
+        if (!themeColor) {
+            console.warn('Warning: Could not resolve --color-bg-header, using fallback #1c100f');
+            return '#1c100f';
+        }
+
+        return themeColor;
+    } catch (err) {
+        console.warn('Warning: Could not read colors.css, using fallback #1c100f');
+        return '#1c100f';
+    }
+}
+
 // Simple markdown to HTML converter
 function markdownToHtml(markdown) {
     let html = markdown;
@@ -101,7 +168,7 @@ function replaceTemplateVars(content, config) {
 }
 
 // HTML template generator
-function generatePageHtml(content, pageConfig, translations, config) {
+function generatePageHtml(content, pageConfig, translations, config, themeColor) {
     const { title, description, lang, slug, baseUrl } = pageConfig;
     const isEnglish = lang === 'en';
     const backLabel = translations?.[lang]?.staticPages?.backToMenu || (isEnglish ? 'Back to Menu' : 'Torna al Menu');
@@ -136,7 +203,7 @@ function generatePageHtml(content, pageConfig, translations, config) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="description" content="${description}">
-    <meta name="theme-color" content="#ffffff">
+    <meta name="theme-color" content="${themeColor}">
     <title>${title}</title>
     <link rel="icon" type="image/png" href="../../assets/images/iltuobar_favicon.png">
     
@@ -188,6 +255,10 @@ function build() {
     const pagesDir = path.join(rootDir, 'pages');
     const enDir = path.join(pagesDir, 'en');
     const itDir = path.join(pagesDir, 'it');
+
+    // Get theme color from CSS
+    const themeColor = getThemeColorFromCSS();
+    console.log(`Theme color resolved to: ${themeColor}`);
 
     // Load config
     let config = {};
@@ -271,7 +342,7 @@ function build() {
                     slug,
                     baseUrl
                 };
-                const pageHtml = generatePageHtml(contentHtml, pageData, translations, config);
+                const pageHtml = generatePageHtml(contentHtml, pageData, translations, config, themeColor);
 
                 // Write output
                 fs.writeFileSync(outputPath, pageHtml, 'utf8');
