@@ -321,7 +321,8 @@ export function processMenuData(rawData, categoryData = []) {
             allergens: getAllergens(row),
             allergenKeys: getAllergenKeys(row),
             tipo: tipo,
-            noGlutenOption: isTruthy(row.no_gluten_option)
+            noGlutenOption: isTruthy(row.no_gluten_option),
+            plantBasedMilkOption: isTruthy(row.plant_based_milk_option)
         });
     });
 

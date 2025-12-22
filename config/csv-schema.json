@@ -39,7 +39,8 @@
             "all_12_sulfites": "all_12_sulfites",
             "all_13_lupin": "all_13_lupin",
             "all_14_mollusks": "all_14_mollusks",
-            "no_gluten_option": "no_gluten_option"
+            "no_gluten_option": "no_gluten_option",
+            "plant_based_milk_option": "plant_based_milk_option"
         },
         "types": {
             "time_slot": "time_slot",
@@ -108,7 +109,8 @@
             "all_12_sulfites": "all_12_solfiti",
             "all_13_lupin": "all_13_lupini",
             "all_14_mollusks": "all_14_molluschi",
-            "no_gluten_option": "opzione_senza_glutine"
+            "no_gluten_option": "opzione_senza_glutine",
+            "plant_based_milk_option": "opzione_latte_vegetale"
         },
         "types": {
             "time_slot": "fascia_oraria",

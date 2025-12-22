@@ -49,13 +49,13 @@
 .info-title {
     font-size: var(--font-size-lg);
     font-weight: 700;
-    color: var(--color-text-main);
+    color: var(--color-text-brand);
     margin-bottom: var(--spacing-sm);
 }
 
 .info-text {
     font-size: var(--font-size-base);
-    color: var(--color-text-dim);
+    color: var(--color-text-main);
     line-height: 1.6;
     margin: 0;
 }
@@ -103,25 +103,6 @@
     }
 }
 
-/* Social Grid */
-.social-grid {
-    display: flex;
-    gap: var(--spacing-md);
-    flex-wrap: wrap;
-}
-
-.social-link {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 16px;
-    background: var(--color-bg-card);
-    border-radius: 20px;
-    text-decoration: none;
-    color: var(--color-text-main);
-    font-weight: 500;
-    box-shadow: var(--shadow-card);
-}
 
 /* Contacts Section */
 .contacts-section {
@@ -136,13 +117,13 @@
     align-items: center;
     gap: var(--spacing-sm);
     color: var(--color-text-dim);
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-base);
     text-decoration: none;
 }
 
 .contact-row .fluent-icon {
     font-size: 1.125rem;
-    color: var(--color-text-brand);
+    color: var(--color-text-main);
     flex-shrink: 0;
     width: 1.25rem;
     text-align: center;

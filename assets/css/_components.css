@@ -16,12 +16,13 @@
 
 .kitchen-status-card {
     /* Default (Upcoming) Style */
-    background: var(--color-bg-chip-info);
+    background: var(--color-bg-kitchen-status-card);
     /* Solid tertiary color, no gradient */
-    color: var(--color-text-on-info);
+    color: var(--color-text-kitchen-status-card);
     padding: 10px 20px;
     /* Slightly larger padding for "big enough" feel */
     border-radius: var(--border-radius-lg);
+    border: 1px solid var(--color-border-kitchen-status-card);
     /* Standard rounded corner */
     font-size: var(--font-size-sm);
     text-align: center;
@@ -41,8 +42,8 @@
 
 .kitchen-status-card.active {
     /* Active Style */
-    background: var(--color-status-success);
-    color: #354e16;
+    background: var(--color-bg-kitchen-status-card-active);
+    color: var(--color-text-kitchen-status-card-active);
     border-radius: 100px;
     /* Fully round pill */
 }
@@ -106,17 +107,12 @@
     left: 0;
     right: 0;
     height: var(--filter-bar-height);
-    background: var(--color-bg-surface-subtle);
+    background: var(--color-bg-app-sheet);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.20);
     border-bottom: none;
     z-index: 50;
-    /* Wrapper handles layout now, removing flex from parent */
-    /* display: flex;  <- Removed */
-    /* align-items: center; <- Removed */
-    /* gap: var(--spacing-sm); <- Removed */
-    /* padding: 0 var(--spacing-md); <- Removed (moved to wrapper) */
     width: 100%;
     margin-top: calc(-1 * var(--filter-bar-height));
     border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
@@ -155,10 +151,10 @@
     gap: 6px;
     padding: 0 12px;
     height: 32px;
-    border: 1px solid var(--color-border-strong);
+    border: 1px solid var(--color-border-cta-filters);
     outline: none;
     background: transparent;
-    color: var(--color-text-main);
+    color: var(--color-text-cta-filters);
     border-radius: 16px;
     cursor: pointer;
     font-size: var(--font-size-xs);
@@ -169,13 +165,9 @@
 }
 
 .filter-trigger:hover {
-    background: var(--color-bg-surface-hover);
+    background: var(--color-bg-surface-cta-filters-hover);
 }
 
-.filter-trigger.has-filters {
-    color: var(--color-text-accent-alt);
-    font-weight: 700;
-}
 
 .clear-filters-btn {
     display: flex;
@@ -227,8 +219,8 @@
     font-weight: 500;
     white-space: nowrap;
     flex-shrink: 0;
-    background-color: var(--color-bg-chip);
-    color: var(--color-text-main);
+    background-color: var(--color-bg-chip-allergen);
+    color: var(--color-text-on-chip-allergen);
 }
 
 .diet-chip {
@@ -242,8 +234,8 @@
 }
 
 .allergen-chip-count {
-    background: var(--color-bg-chip-info);
-    color: var(--color-text-on-info);
+    background: var(--color-bg-chip-allergen);
+    color: var(--color-text-on-chip-allergen);
 }
 
 .chip-icon {
@@ -255,10 +247,10 @@
     align-items: center;
     gap: 4px;
     padding: 2px 8px;
-    background-color: var(--color-bg-chip);
+    background-color: var(--color-bg-chip-allergen);
     border-radius: 12px;
     font-size: var(--font-size-xs);
-    color: var(--color-text-dim);
+    color: var(--color-text-on-chip-allergen);
     white-space: nowrap;
 }
 
@@ -279,7 +271,9 @@
 }
 
 .modal {
-    background: var(--color-bg-card);
+    scrollbar-color: var(--color-text-dim) var(--color-bg-header);
+    background: var(--color-bg-modal);
+    color: var(--color-text-main);
     border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
     width: 100%;
     max-width: var(--max-width);
@@ -311,10 +305,10 @@
     border-radius: 50%;
     cursor: pointer;
     font-size: 1rem;
-    color: var(--color-text-dim);
     display: flex;
     align-items: center;
     justify-content: center;
+    color: var(--color-text-main);
 }
 
 .modal-body {
@@ -335,7 +329,7 @@
 .filter-section-title {
     font-size: var(--font-size-sm);
     font-weight: 700;
-    color: var(--color-text-dim);
+    color: var(--color-text-main);
     text-transform: uppercase;
     letter-spacing: 0.5px;
     margin-bottom: var(--spacing-sm);
@@ -343,7 +337,7 @@
 
 .filter-section-desc {
     font-size: var(--font-size-xs);
-    color: var(--color-text-dim);
+    color: var(--color-text-main);
     margin-bottom: var(--spacing-md);
 }
 
@@ -376,14 +370,14 @@
 }
 
 .diet-option:hover {
-    background: var(--color-divider);
+    background: var(--color-bg-diet-active);
 }
 
 .diet-option.active {
-    background: var(--color-bg-card);
-    color: var(--color-text-brand);
+    background: var(--color-bg-diet-active);
+    color: var(--color-text-on-diet-active);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    border-color: var(--color-text-brand);
+    border-color: var(--color-border-diet-active);
     border-width: 2px;
     border-style: solid;
 }
@@ -408,7 +402,7 @@
     align-items: center;
     gap: var(--spacing-sm);
     padding: 10px var(--spacing-md);
-    background: var(--color-bg-app-sheet);
+    background-color: var(--color-bg-allergen-button-inactive);
     border-radius: var(--border-radius);
     cursor: pointer;
     transition: all 0.2s ease;
@@ -417,13 +411,13 @@
 }
 
 .allergen-checkbox:hover {
-    background: var(--color-divider);
+    background-color: var(--color-bg-allergen-button-hover);
 }
 
 .allergen-checkbox.checked {
-    background: var(--color-bg-chip-info);
+    background-color: var(--color-bg-allergen-button-checked);
     border-color: var(--color-text-accent-alt);
-    background-color: color-mix(in srgb, var(--color-bg-chip-info), var(--color-text-accent-alt) 20%);
+    color: var(--color-text-allergen-button-checked);
 }
 
 .allergen-checkbox input[type="checkbox"] {
@@ -465,12 +459,12 @@
 }
 
 .modal-btn.primary {
-    background: var(--color-text-brand);
-    color: white;
+    background: var(--color-bg-cta-primary);
+    color: var(--color-text-cta-primary);
 }
 
 .modal-btn.primary:hover {
-    background: color-mix(in srgb, var(--color-text-brand), black 10%);
+    background: color-mix(in srgb, var(--color-bg-cta-primary), black 10%);
 }
 
 .modal-btn.secondary {
@@ -517,8 +511,8 @@
 }
 
 .cta-btn.primary {
-    background: var(--color-text-brand);
-    color: white;
+    background: var(--color-bg-cta-primary);
+    color: var(--color-text-cta-primary);
 }
 
 .cta-btn.secondary {

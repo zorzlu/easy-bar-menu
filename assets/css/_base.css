@@ -161,6 +161,8 @@
 html {
     font-size: 16px;
     -webkit-text-size-adjust: 100%;
+    scrollbar-color: var(--color-text-dim) var(--color-bg-header);
+
 }
 
 body {
@@ -199,11 +201,11 @@ body {
 
 /* Focus */
 :focus-visible {
-    outline: 2px solid var(--color-text-brand);
+    outline: 2px solid var(--color-outline-buttons);
     outline-offset: 2px;
 }
 
 button:focus-visible {
-    outline: 2px solid var(--color-text-brand);
+    outline: 2px solid var(--color-outline-buttons);
     outline-offset: 2px;
 }

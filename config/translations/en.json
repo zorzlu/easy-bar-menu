@@ -10,7 +10,8 @@
         "updated": "Menu updated",
         "contacts": "Contacts",
         "welcomeMessage": "Welcome!",
-        "noGlutenOption": "Gluten-free option available"
+        "noGlutenOption": "Gluten-free option available",
+        "plantBasedMilkOption": "Plant-based milk option available"
     },
     "nav": {
         "kitchen": "Kitchen",

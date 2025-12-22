@@ -77,10 +77,11 @@ function applyFiltersToData(categories) {
                         // item.allergenKeys are keys from ALLERGENS in i18n.js
                         const allergenConfig = ALLERGENS[key];
                         // Comparison: use the 'key' property from config ('gluten', 'milk', etc.)
-                        const isGluten = allergenConfig && allergenConfig.key === 'gluten';
-
-                        if (isGluten && item.noGlutenOption) {
+                        if (allergenConfig && allergenConfig.key === 'gluten' && item.noGlutenOption) {
                             return false; // Don't exclude if it has no-gluten option
+                        }
+                        if (allergenConfig && allergenConfig.key === 'milk' && item.plantBasedMilkOption) {
+                            return false; // Don't exclude if it has plant-based milk option
                         }
                         return excludeAllergens.includes(key);
                     });
@@ -263,7 +264,7 @@ export function render() {
             // Classic Mode (No Accordion)
             wrapperStart = `<section class="category-section">`;
             headerHtml = `
-                <h2 class="category-title">${escapeHTML(categoryName)}</h2>
+                <h3 class="category-title">${escapeHTML(categoryName)}</h3>
                 <ul class="menu-items" role="list">
             `;
             wrapperEnd = `</ul></section>`;
@@ -282,7 +283,7 @@ export function render() {
             const hasDietBadge = foodTypeLabel;
             const hasAllergens = item.allergens && item.allergens.length > 0;
 
-            if (hasDietBadge || hasAllergens || item.noGlutenOption) {
+            if (hasDietBadge || hasAllergens || item.noGlutenOption || item.plantBasedMilkOption) {
                 footerHtml = '<div class="item-footer">';
 
                 if (hasDietBadge) {
@@ -301,6 +302,13 @@ export function render() {
                     footerHtml += `
                         <div class="no-gluten-option-row">
                             ${t('ui.noGlutenOption')}
+                        </div>
+                    `;
+                }
+                if (item.plantBasedMilkOption) {
+                    footerHtml += `
+                        <div class="no-gluten-option-row">
+                            ${t('ui.plantBasedMilkOption')}
                         </div>
                     `;
                 }
@@ -593,8 +601,9 @@ function renderInfoPage() {
             config.contact.socials.forEach(social => {
                 let iconHtml = '';
                 if (social.name.toLowerCase() === 'instagram') {
-                    // Assuming we have this icon or it was in original code
-                    iconHtml = `<img src="assets/icons/Instagram_Glyph_Black.svg" alt="" class="social-icon" aria-hidden="true">`;
+                    const isDark = config.settings?.theme?.mode === 'dark';
+                    const iconFile = isDark ? 'Instagram_Glyph_White.svg' : 'Instagram_Glyph_Black.svg';
+                    iconHtml = `<img src="assets/icons/${iconFile}" alt="" class="social-icon" aria-hidden="true">`;
                 } else {
                     iconHtml = `<span class="fluent-icon" aria-hidden="true">&#xf583;</span>`;
                 }

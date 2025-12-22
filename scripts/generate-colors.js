@@ -83,7 +83,7 @@ function generateColors() {
         cssContent += `    --color-text-muted: var(--md-sys-color-tertiary);\n`;
         cssContent += `    --color-text-brand: var(--md-sys-color-primary);\n`;
         cssContent += `    --color-text-inverse: var(--md-sys-color-on-primary-container);\n`;
-        cssContent += `    --color-text-on-info: var(--md-sys-color-on-tertiary-container);\n`;
+        cssContent += `    --color-text-on-info: var(--md-sys-color-tertiary);\n`;
         cssContent += `    --color-text-accent-alt: var(--md-sys-color-tertiary);\n`;
 
         cssContent += '\n    /* Backgrounds: App & Structure */\n';
@@ -103,11 +103,16 @@ function generateColors() {
 
         cssContent += '\n    /* Chips & Feedback */\n';
         cssContent += `    --color-bg-chip: var(--md-sys-color-surface-variant);\n`;
+        cssContent += `    --color-text-on-chip: var(--md-sys-color-on-surface-variant);\n`;
+        cssContent += `    --color-extra-text-on-product-card: var(--md-sys-color-tertiary);\n`;
         cssContent += `    --color-bg-chip-info: var(--md-sys-color-tertiary-container);\n`;
 
         cssContent += '\n    /* Interactive & States */\n';
+        cssContent += `    --color-bg-cta-primary: var(--md-sys-color-primary);\n`;
+        cssContent += `    --color-text-cta-primary: var(--md-sys-color-on-primary);\n`;
         cssContent += `    --color-nav-item-active-bg: var(--md-sys-color-on-primary-container);\n`;
         cssContent += `    --color-nav-item-active-fg: var(--md-sys-color-primary-container);\n`;
+        cssContent += `    --color-nav-text: var(--md-sys-color-on-primary-container);\n`;
 
         cssContent += '\n    /* Decorative */\n';
         cssContent += `    --color-gradient-start: var(--md-sys-color-secondary-container);\n`;
@@ -123,10 +128,10 @@ function generateColors() {
         cssContent += `    --color-status-error: var(--md-sys-color-error);\n`;
         cssContent += `    --color-bg-error: var(--md-sys-color-error-container);\n`;
 
-        cssContent += `    --color-veg-text: #4caf50;\n`;
-        cssContent += `    --color-veg-bg: #e8f5e9;\n`;
-        cssContent += `    --color-veg-vegan-text: #2e7d32;\n`;
-        cssContent += `    --color-veg-vegan-bg: #c8e6c9;\n`;
+        cssContent += `    --color-veg-text: var(--md-sys-color-on-secondary-container);\n`;
+        cssContent += `    --color-veg-bg: var(--md-sys-color-secondary-container);\n`;
+        cssContent += `    --color-veg-vegan-text: var(--md-sys-color-on-tertiary-container);\n`;
+        cssContent += `    --color-veg-vegan-bg: var(--md-sys-color-tertiary-container);\n`;
 
         cssContent += '\n    /* Shadows */\n';
         cssContent += `    --color-shadow: var(--md-sys-color-shadow);\n`;

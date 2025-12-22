@@ -37,12 +37,6 @@
     gap: var(--spacing-md);
 }
 
-.last-updated {
-    font-size: var(--font-size-xs);
-    color: var(--color-text-dim);
-    font-variant-numeric: tabular-nums;
-}
-
 /* Lang Switch */
 .lang-switch {
     display: flex;
@@ -179,7 +173,7 @@
     background-color: var(--color-bg-app-sheet);
     margin-top: calc(var(--header-height) + var(--header-hero-height) + var(--sa-top));
     transition: margin-top 0.35s ease-out, border-radius 0.35s ease-out;
-    box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px -2px 10px 2px rgba(0, 0, 0, 0.10);
     border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
     padding-top: var(--filter-bar-height);
     padding-bottom: calc(80px + 32px + var(--sa-bottom));
