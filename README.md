@@ -1,21 +1,23 @@
-# ScomodoMenu
+# Easy Bar Menu
 
 A modern, mobile-first digital menu application for bars and restaurants. Powered by Google Sheets for easy content management.
 
-![Home Page](#)
-*Placeholder: Screenshot of the home page*
+![Menu app home page](docs/app.png)  
+*Screenshot of the home page of the Menu*
 
 ---
 
 ## Quick Start
 
-1. **Copy the Template**: [Open the Google Sheets template](YOUR_GOOGLE_SHEETS_TEMPLATE_LINK_HERE) and make a copy to your Google Drive
+1. **Copy the Template**: [Open the Google Sheets template](https://docs.google.com/spreadsheets/d/15OwloYGgx9OTKt9dtR9erWvJbgVeTTwtxUuiM92e75E/edit?usp=sharing) and save a copy to your Google Drive
 
-2. **Edit Your Menu**: Update the spreadsheet with your menu items, opening hours, and content
+2. **Edit Your Menu**: Update the spreadsheet with your menu items, opening hours, and content. For detailed instructions, see [Google Sheets Setup Guide](docs/GOOGLE_SHEETS_SETUP.md)
 
 3. **Publish as CSV**: In Google Sheets, go to File > Share > Publish to web, select CSV format, and copy the URL
 
-4. **Configure**: Paste the CSV URL into `config/config.json`:
+4. **Clone the repository**: Clone the current repository to your machine
+
+5. **Configuration**: Edit the `config/config.json` file to reflect your brand identity and paste the CSV URL:
    ```json
    {
      "inputData": {
@@ -24,9 +26,17 @@ A modern, mobile-first digital menu application for bars and restaurants. Powere
    }
    ```
 
-5. **Deploy**: Upload to GitHub Pages, Netlify, or any static hosting service
+6. **Theming and SEO**: Execute the scripts, if needed.
+   ```bash
+   npm run generate-theme
+   npm run build-pages
+   npm run build-index
+   npm run build-seo
+   ```
 
-**Detailed Instructions**: See [Google Sheets Setup Guide](docs/GOOGLE_SHEETS_SETUP.md)
+7. **Deploy**: Upload to GitHub Pages, Netlify, or any static hosting service
+
+
 
 ---
 
@@ -35,28 +45,29 @@ A modern, mobile-first digital menu application for bars and restaurants. Powere
 ### Mobile-First Design
 Responsive interface optimized for smartphones with Material Design 3 aesthetics.
 
-![Mobile Interface](#)
-*Placeholder: Mobile device screenshots*
-
 ### Multilanguage Support
 Native Italian and English support with instant language switching.
 
 ### Easy Content Management
 Update your menu through Google Sheets - no coding or deployment required.
 
-### Allergen Tracking
-Complete support for all 14 EU-regulated allergens with filtering capabilities.
+![Google Sheets Example](docs/gsheets_table_example.png)  
+*Example of the unified Google Sheets structure with multiple tables side by side*
 
-![Filter Interface](#)
-*Placeholder: Allergen filter screenshot*
+### Allergen Tracking & Diet Filters
+Complete support for all 14 EU-regulated allergens with filtering capabilities. Filter menu items by Vegetarian and Vegan preferences. Additionally, you can display the availability of dairy-free and gluten-free product variants.
 
-### Diet Filters
-Filter menu items by Vegetarian and Vegan preferences.
+
+![Filter Interface](docs/refiners.png)  
+*Allergen and diet filters*
+
+![Filter Interface](docs/refiners_applied.png)  
+*Menu with allergen and diet filters applied*
 
 ### Kitchen Status Display
 Real-time kitchen availability based on configured time slots.
 
-![Kitchen Status](#)
+![Kitchen Status](docs/kitchen_status.png)  
 *Placeholder: Kitchen status cards*
 
 ### Zero Backend
@@ -83,8 +94,8 @@ Pure static site - works on any hosting service with no server required.
 
 ```bash
 # Clone the repository
-git clone https://github.com/zorzlu/ScomodoMenu.git
-cd ScomodoMenu
+git clone https://github.com/zorzlu/Easy Bar Menu.git
+cd Easy Bar Menu
 
 # Install dependencies
 npm install
@@ -113,7 +124,7 @@ npm run build           # Run all build scripts
 
 1. Push to GitHub
 2. Settings > Pages > Select branch > Save
-3. Access at `https://username.github.io/ScomodoMenu`
+3. Access at `https://username.github.io/easy-menu`
 
 ### Netlify / Vercel
 
@@ -123,14 +134,14 @@ Drag and drop the project folder or connect your GitHub repository.
 
 ## Screenshots
 
-![Menu View](#)
-*Placeholder: Menu categories and items*
+![Menu View](docs/en_language.png)  
+*Menu categories and items*
 
-![Item Details](#)
-*Placeholder: Menu item with allergen information*
+![Info Page](docs/info_page_1.png)  
+*Info page with custom content*
 
-![Info Page](#)
-*Placeholder: Info page with opening hours and contact*
+![Info Page](docs/info_page_2.png)  
+*Info page with opening hours and contact*
 
 ---
 
@@ -140,15 +151,6 @@ Drag and drop the project folder or connect your GitHub repository.
 - Material Design 3 color system
 - Google Sheets API (CSV export)
 - No frameworks or build tools required for runtime
-
----
-
-## Browser Support
-
-- Chrome/Edge (latest)
-- Firefox (latest)
-- Safari (latest)
-- Mobile browsers (iOS Safari, Chrome Mobile)
 
 ---
 
@@ -168,9 +170,5 @@ See [LICENSE](LICENSE) file for details.
 ## Support
 
 - Documentation: [docs/](docs/)
-- Issues: [GitHub Issues](https://github.com/zorzlu/ScomodoMenu/issues)
+- Issues: [GitHub Issues](https://github.com/zorzlu/Easy Bar Menu/issues)
 - Template: [Google Sheets Template](YOUR_GOOGLE_SHEETS_TEMPLATE_LINK_HERE)
-
----
-
-**Built with modern web technologies and Material Design 3 principles.**

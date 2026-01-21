@@ -1,8 +1,0 @@
-category_id,label_it,label_en,order,menu
-beers,Birre,Beers,1,bar
-cocktails,Cocktail,Cocktails,2,bar
-soft_drinks,Analcolici,Soft Drinks,3,bar
-snacks,Snack,Snacks,4,bar
-first_courses,Primi,First Courses,1,kitchen
-main_courses,Secondi,Main Courses,2,kitchen
-desserts,Dolci,Desserts,3,kitchen

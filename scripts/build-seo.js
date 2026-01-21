@@ -54,7 +54,7 @@ function build() {
 
 function generateRobotsTxt(baseUrl, allowIndexing) {
     const lines = [
-        '# Robots.txt for ScomodoMenu',
+        '# Robots.txt for Easy Bar Menu',
         `# ${baseUrl}`,
         '#',
         `# Search engine indexing: ${allowIndexing ? 'ENABLED' : 'DISABLED'}`,

@@ -1,4 +1,4 @@
-# Robots.txt for ScomodoMenu
+# Robots.txt for Easy Bar Menu
 # https://zorzlu.github.io/BarMenu
 #
 # Search engine indexing: DISABLED

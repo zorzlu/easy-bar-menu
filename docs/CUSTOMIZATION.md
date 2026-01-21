@@ -1,6 +1,6 @@
 # Customization Guide
 
-Guide for customizing the look, feel, and behavior of ScomodoMenu.
+Guide for customizing the look, feel, and behavior of Easy Bar Menu.
 
 ---
 

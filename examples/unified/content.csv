@@ -1,9 +1,0 @@
-type,label_it,label_en,text_it,text_en,link,style
-menu_header_kitchen,Piatti del Giorno,Daily Specials,Scopri i nostri piatti del giorno!,Discover our daily specials!,,card
-menu_header_bar,Bevande,Drinks,Ampia selezione di vini e cocktail.,Wide selection of wines and cocktails.,,plain
-text,Chi Siamo,About Us,"Benvenuti nel nostro locale! Offriamo prodotti freschi e di qualità, selezionati con cura per garantirvi un'esperienza indimenticabile.","Welcome to our place! We offer fresh, quality products, carefully selected to guarantee you an unforgettable experience.",,card
-text,Eventi,Events,Ogni venerdì musica dal vivo a partire dalle 22:00.,Live music every Friday starting at 10 PM.,,plain
-text,Prenotazioni,Reservations,Consigliamo la prenotazione per il fine settimana.,We recommend booking for weekends.,,plain
-cta,Prenota un Tavolo,Book a Table,,,tel:+390612345678,primary
-cta,Scrivici su WhatsApp,Message us on WhatsApp,,,https://wa.me/391234567890,secondary
-cta,Vedi Menu Completo,View Full Menu,,,https://iltuobar.it/menu,secondary

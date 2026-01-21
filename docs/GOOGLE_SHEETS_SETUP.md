@@ -1,6 +1,6 @@
 # Google Sheets Integration Guide
 
-This guide explains how to set up and use Google Sheets as the data source for ScomodoMenu.
+This guide explains how to set up and use Google Sheets as the data source for Easy Bar Menu.
 
 ---
 
@@ -14,7 +14,9 @@ The application uses Google Sheets as a dynamic content management system. Menu 
 
 ### 1. Copy the Template
 
-1. Open the template Google Sheet: **[ScomodoMenu Template](YOUR_GOOGLE_SHEETS_TEMPLATE_LINK_HERE)**
+1. Open the template Google Sheet: **[Easy Bar Menu Template](https://docs.google.com/spreadsheets/d/15OwloYGgx9OTKt9dtR9erWvJbgVeTTwtxUuiM92e75E/edit?usp=sharing)**  
+*Note: This template is in Italian. If you want to create the English version, you should use the translations of the keys available in the [csv-schema.json](../config/csv-schema.json) file.*
+
 2. Click **File** > **Make a copy**
 3. Choose a location in your Google Drive
 4. Rename the copy to something meaningful (e.g., "Restaurant Menu - Live")
@@ -25,9 +27,18 @@ The template contains the complete structure with sample data for reference.
 
 Update the spreadsheet with your actual menu items. Replace the sample data with your own content.
 
-The structure is explained in detail in the [Data Structure Guide](DATA_STRUCTURE.md).
+The file is structured as follows:
+- **Bar Menu**: Items available at the bar.
+- **Kitchen Menu**: Items available from the kitchen.
+- **Categories**: Categories of the menu (both bar and kitchen).
+- **Timeslots**: Opening times for the bar, kitchen, and special hours (e.g., happy hour/aperitivo).
+- **Content**: Content for the menu (textual info on the 'Info' page, button links, and banners in the bar and kitchen menus).
+- **Settings**: DO NOT MODIFY (Required for category dropdowns in bar/kitchen menus).
+- **Export**: DO NOT MODIFY (Required for CSV export).
 
-**Important**: Do not modify Row 1 (section markers) as it defines the table boundaries.
+The structure is explained in detail in the [Data Structure Guide](DATA_STRUCTURE.md#table-specifications-valid-also-for-googlesheets).
+
+**Important**: Do not modify Row 1 (section markers) as it defines the table boundaries. Do NOT edit "settings" and "export" sheets.
 
 ![Google Sheets Example](gsheets_table_example.png)
 *Example of the unified Google Sheets structure with multiple tables side by side*
@@ -35,7 +46,7 @@ The structure is explained in detail in the [Data Structure Guide](DATA_STRUCTUR
 ### 3. Publish as CSV
 
 1. In your copied Google Sheet, go to **File** > **Share** > **Publish to web**
-2. In the **Link** tab, select the specific sheet (usually "Sheet1")
+2. In the **Link** tab, select the "Export" sheet
 3. Change the format dropdown from "Web page" to **Comma-separated values (.csv)**
 4. Check "Automatically republish when changes are made" for instant updates
 5. Click **Publish**
@@ -75,24 +86,7 @@ Changes to your Google Sheet are typically reflected within a few minutes, but G
 
 ### Data Validation
 
-Before publishing your sheet:
-- Check that all category IDs in menu items match those defined in the Categories table
-- Verify price formatting is consistent (use decimals like `12.00`, not `12`)
-- Ensure `active` fields contain `true` or `false` (lowercase)
-- Confirm allergen columns contain boolean values
-
-### Backup Your Data
-
-Regularly export a backup:
-1. In Google Sheets, go to **File** > **Download** > **Comma Separated Values (.csv)**
-2. Save the file in your project's `examples/` folder
-
-### Multiple Sheets
-
-If you want to maintain separate versions (e.g., summer menu vs. winter menu):
-1. Duplicate your Google Sheet tab
-2. Make changes to the new tab
-3. Publish the new tab and update `config.json` when ready to switch
+The example sheet is configured to ensure each value has the proper type, ensuring data consistency and preventing issues while modifying it. Checkboxes and dropdowns are configured to have the proper values, so you don't have to worry about typing the wrong value.
 
 ---
 
@@ -115,15 +109,13 @@ If you want to maintain separate versions (e.g., summer menu vs. winter menu):
 **Solutions**:
 - Verify `active` is set to `true`
 - Check that the `category` matches a `category_id` in the Categories table
-- Ensure the category's `menu` field is either `bar` or `cuisine`
+- Ensure the category's `menu` field is either `bar` or `kitchen`
 
 ### Formatting Issues
 
 **Problem**: Prices or special characters display incorrectly.
 
 **Solutions**:
-- Check `csvNumberFormat` in `config.json` matches your sheet's locale
-- Use UTF-8 encoding for special characters
 - Avoid special formatting in Google Sheets (keep it plain text)
 
 ---

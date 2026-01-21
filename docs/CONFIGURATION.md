@@ -1,6 +1,6 @@
 # Configuration Guide
 
-Complete reference for configuring ScomodoMenu via `config/config.json`.
+Complete reference for configuring Easy Bar Menu via `config/config.json`.
 
 ---
 
